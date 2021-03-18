@@ -1,0 +1,73 @@
+<div class="row">
+    <div class="col-lg-6">
+        <h2>Listado de Empleados</h2>
+    </div>
+    <div class="col-lg-6 txt">
+        <button mat-raised-button color="primary" routerLink="/add-empleado">Agregar Empleado</button>
+    </div>
+</div>
+<div class="example-header" fxLayout="row">
+    <mat-form-field>
+        <mat-label>Filtro</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Buscar..." #input autocomplete="off">
+    </mat-form-field>
+</div>
+<div class="example-container mat-elevation-z8">
+
+    <mat-table [dataSource]="dataSource" matSort>
+
+        <ng-container matColumnDef="nombreCompleto">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.nombreCompleto}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="correo">
+            <mat-header-cell *matHeaderCellDef> Correo </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.correo}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="telefono">
+            <mat-header-cell *matHeaderCellDef> Teléfono </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.telefono}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="estadoCivil">
+            <mat-header-cell *matHeaderCellDef> Estado Civil </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.estadoCivil}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="fechaIngreso">
+            <mat-header-cell *matHeaderCellDef> Fecha de ingreso </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.fechaIngreso | date:"MM/dd/yy"}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="sexo">
+            <mat-header-cell *matHeaderCellDef> Sexo </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.sexo === 'masculino' ? 'M' : 'F'}} </mat-cell>
+        </ng-container>
+
+
+
+        <ng-container matColumnDef="acciones">
+            <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <a class="editar pointer" [routerLink]="['/edit-empleado', element.uid]">
+                    <mat-icon>edit</mat-icon>
+                </a>
+                <a class="eliminar pointer" (click)="eliminarEmpleado(element)">
+                    <mat-icon>delete</mat-icon>
+                </a>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No hay empleados con el término de búsqueda: "{{input.value}}"</td>
+        </tr>
+    </mat-table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>

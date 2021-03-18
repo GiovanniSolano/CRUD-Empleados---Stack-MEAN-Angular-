@@ -1,0 +1,9 @@
+<h1 class="center" mat-dialog-titlw>Eliminar empleado</h1>
+<div mat-dialog-content class="center">
+    <p>{{mensaje}}</p>
+
+</div>
+<div mat-dialog-actions class="margin">
+    <button mat-button (click)="onNoClick()">Cancelar</button>
+    <button mat-button [mat-dialog-close]="btn" cdkFocusInitial>Aceptar</button>
+</div>

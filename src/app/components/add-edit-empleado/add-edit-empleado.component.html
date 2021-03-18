@@ -1,0 +1,80 @@
+<div class="row text-center">
+    <div class="col-lg-6">
+        <h2>{{accion}} Empleado</h2>
+    </div>
+</div>
+<div class="row mx-auto">
+    <div class="col-lg-6">
+        <form autocomplete="off" [formGroup]="myForm" (ngSubmit)="agregarEmpleado()">
+            <div class="col-lg-12">
+                <mat-form-field class="example-container" [style.fontSize.px]="16">
+                    <mat-label>Nombre Completo</mat-label>
+                    <input matInput formControlName="nombreCompleto">
+                </mat-form-field>
+                <small class="text-danger form-text margin" *ngIf="nombreRequerido">El nombre es requerido</small>
+                <small class="text-danger form-text margin" *ngIf="nombreValido">Ingresa al menos 3 letras</small>
+            </div>
+            <br>
+            <div class="col-lg-12">
+                <mat-form-field class="example-container" [style.fontSize.px]="16">
+                    <mat-label>Correo</mat-label>
+                    <input matInput formControlName="correo">
+                </mat-form-field>
+                <small class="text-danger form-text margin" *ngIf="correoRequerido">El correo es requerido</small>
+                <small class="text-danger form-text margin" *ngIf="correoValido">Ingresa un correo válido</small>
+
+            </div>
+            <br>
+            <div class="col-lg-12">
+                <mat-form-field class="example-full-width example-container">
+                    <mat-label>Fecha Ingreso</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="fechaIngreso">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker touchUi #picker></mat-datepicker>
+                </mat-form-field>
+                <small class="text-danger form-text margin" *ngIf="fechaRequerida">La fecha de ingreso es requerida</small>
+
+            </div>
+            <br>
+            <div class="col-lg-12">
+                <mat-form-field class="example-container">
+                    <mat-label>Teléfono</mat-label>
+                    <input matInput formControlName="telefono">
+                </mat-form-field>
+                <small class="text-danger form-text margin" *ngIf="telefonoRequerido">El teléfono es requerido</small>
+                <small class="text-danger form-text margin" *ngIf="telefonoValido">10 digitos</small>
+
+            </div>
+            <br>
+            <div class="col-lg-12">
+                <mat-form-field class="example-container">
+                    <mat-label>Estado Civil</mat-label>
+                    <mat-select formControlName="estadoCivil">
+                        <mat-option *ngFor="let estadoC of estadosCiviles" [value]="estadoC">
+                            {{estadoC}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <small class="text-danger form-text margin" *ngIf="estadoCRequerido">El estado civil es requerido</small>
+
+            </div>
+            <br>
+            <div class="col-lg-12 mt-3">
+                <mat-radio-group aria-label="Seleccione una opción" formControlName="sexo">
+                    <mat-radio-button value="masculino" class="right">Masculino</mat-radio-button>
+                    <mat-radio-button value="femenino">Femenino</mat-radio-button>
+                </mat-radio-group>
+                <small class="text-danger form-text" *ngIf="sexoRequerido">El sexo es requerido</small>
+
+            </div>
+            <div class="col-lg-12 mt-3">
+                <button mat-raised-button color="primary" class="float-right ml-2">{{accion}} Empleado</button>
+                <button mat-raised-button color="warn" type="button" routerLink="" class="float-right">Cancelar</button>
+            </div>
+
+        </form>
+    </div>
+    <div class="col-lg-4 offset-lg-2">
+        <img src="../../../assets/img/crear-usuario.jpg" class="img-responsive img">
+    </div>
+</div>

@@ -1,0 +1,30 @@
+table {
+    width: 100%;
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+
+/* td,
+th {
+    width: 14.28%;
+} */
+
+.pointer {
+    cursor: pointer;
+}
+
+.editar {
+    color: #1878B0;
+}
+
+.eliminar {
+    color: #E15639;
+}
+
+.txt {
+    text-align: right;
+}

@@ -3,15 +3,35 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
+import { AddEditEmpleadoComponent } from './components/add-edit-empleado/add-edit-empleado.component';
+import { ListEmpleadoComponent } from './components/list-empleado/list-empleado.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { AngularMaterialModule } from './shared/angular-material.module';
+
+
+
+import { HttpClientModule } from "@angular/common/http";
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AddEditEmpleadoComponent,
+    ListEmpleadoComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
-  ],
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    AngularMaterialModule,
+    HttpClientModule,
+    ReactiveFormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
